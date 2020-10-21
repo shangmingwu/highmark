@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "Roboto";
+    src: url(Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+    font-family: "Inconsolata";
+    src: url(Inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf);
+}
+
+body {
+    margin: 10px;
+    height: 100vh;
+    background-color: #333333;
+    color: white;
+    font-family: "Roboto";
+}
+
+a {
+    color: #009900;
+}
+
+#entryBox {
+    background-color: #333333;
+    color: white;
+    font-family: "Inconsolata";
+    display: block;
+    box-sizing: border-box;
+    width: 50vw;
+    height: 100%;
+    margin: 0px;
+    padding: 10px;
+    resize: none;
+}
+#outputDiv {
+    border: 1px solid white;
+    padding-left: 10px;
+  }
+
+.flex-container {
+    display: flex;
+    height: 90%;
+}
+
+.flex-child {
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    padding-right: 10px;
+}

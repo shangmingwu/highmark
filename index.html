@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+  <button id="runButton" onClick="render()">Convert</button>
+  <button id="saveButton" onClick="saveEntryBoxToFile()">Save</button>
+  <button id="saveButton" onClick="exportToHTML()">Export to HTML</button>
+  <input type="file" onchange="read(this)"/>
+  <hr>
+  <div class="flex-container">
+
+    <div class="flex-child">
+      Text input
+      <hr>
+      <textarea id="entryBox" placeholder="Welcome to the text editor! Enter text here...."></textarea>
+    </div>
+    <div class="flex-child">
+      Preview
+      <hr>
+      <div id="outputDiv"></div>
+    </div>
+    
+  </div>
+  
+
+  <script src="bower_components/showdown/dist/showdown.min.js"></script>
+  <script src="bower_components/file-saver/dist/FileSaver.min.js"></script>
+  <script src="js/index.js"></script>
+
+</body>
+</html>

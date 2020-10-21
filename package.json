@@ -1,0 +1,24 @@
+{
+  "name": "highmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^10.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noisya55616/highmark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noisya55616/highmark/issues"
+  },
+  "homepage": "https://github.com/noisya55616/highmark#readme"
+}
