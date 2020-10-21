@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "file-saver": "^2.0.2",
+    "showdown": "^1.9.1"
+  },
   "devDependencies": {
     "electron": "^10.1.4"
   },
