@@ -33,7 +33,7 @@ code {
     font-family: "Inconsolata";
     display: block;
     box-sizing: border-box;
-    width: 50vw;
+    width: 100%;
     height: 100%;
     margin: 0px;
     padding: 10px;
@@ -46,8 +46,18 @@ code {
 
 .flex-container {
     display: flex;
-    height: 90%;
+    height: 85vh;
+    flex-direction: row;
 }
+
+@media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+    .flex-child:first-child {
+        padding-bottom: 10px;
+    }
+  }
 
 .flex-child {
     flex: 1;
@@ -55,4 +65,10 @@ code {
 
 .flex-child:first-child {
     padding-right: 10px;
+}
+
+#outputDiv {
+    display: block;
+    height: 100%;
+    overflow: scroll;
 }

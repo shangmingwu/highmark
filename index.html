@@ -5,13 +5,14 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
+  <button id="renderButton" onClick="render()">Render</button>
   <button id="saveButton" onClick="saveButtonClicked()">Save</button>
   <button id="exportButton" onClick="exportButtonClicked()">Export to HTML</button>
   <input id="loadButton" type="file" onchange="read(this)"/>
   <hr>
   <div class="flex-container">
     <div class="flex-child">
-      Text input
+      <span id="boxTitle">Text input</span>
       <hr>
       <textarea id="entryBox" oninput="render()" placeholder="Welcome to the text editor! Enter text here...."></textarea>
     </div>
