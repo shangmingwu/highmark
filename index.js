@@ -6,16 +6,14 @@ function createWindow () {
       nodeIntegration: false
     }
   })
-  win.loadFile('../index.html');
+  win.loadFile('index.html');
   win.maximize();
 }
 
 app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
     app.quit()
-  }
 })
 
 app.on('activate', () => {
