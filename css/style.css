@@ -8,16 +8,23 @@
     src: url(Inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf);
 }
 
+* {
+    font-family: "Roboto";
+}
+
 body {
     margin: 10px;
     height: 100vh;
     background-color: #333333;
     color: white;
-    font-family: "Roboto";
 }
 
 a {
     color: #009900;
+}
+
+code {
+    font-family: "Inconsolata";
 }
 
 #entryBox {

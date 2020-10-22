@@ -1,7 +1,8 @@
 function render() {
+    var converter = new showdown.Converter({simplifiedAutoLink: 'true'}, {ghMentions: 'true'}, {ghMentionsLink: 'true'}, {ghCompatibleHeaderId: 'true'}, {strikethrough: 'true'}, {tasklists: 'true'}, {smoothLivePreview: 'true'}, {openLinksInNewWindow: 'true'}, {emoji: 'true'}, {underline: 'true'}, {metadata: 'true'});
+    converter.setFlavor('github');
     var text = document.getElementById('entryBox').value,
         target = document.getElementById('outputDiv'),
-        converter = new showdown.Converter(),
         html = converter.makeHtml(text);
     target.innerHTML = html;
 }
@@ -26,8 +27,19 @@ function readFile(file) {
       fr.onload = x=> resolve(fr.result);
       fr.readAsText(file);
   })}
+
+function saveButtonClicked() {
+    saveEntryBoxToFile();
+    document.getElementsByTagName('textarea')[0].focus();
+}
+
+function exportButtonClicked() {
+    exportToHTML();
+    document.getElementsByTagName('textarea')[0].focus();
+}
   
 async function read(input) {
     var text = await readFile(input.files[0]);
+    document.getElementById("loadButton").value = "";
     document.getElementById("entryBox").value = text; 
 }
