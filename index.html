@@ -5,12 +5,11 @@
   <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <button id="saveButton" onClick="saveEntryBoxToFile()">Save</button>
-  <button id="saveButton" onClick="exportToHTML()">Export to HTML</button>
-  <input type="file" onchange="read(this)"/>
+  <button id="saveButton" onClick="saveButtonClicked()">Save</button>
+  <button id="exportButton" onClick="exportButtonClicked()">Export to HTML</button>
+  <input id="loadButton" type="file" onchange="read(this)"/>
   <hr>
   <div class="flex-container">
-
     <div class="flex-child">
       Text input
       <hr>
@@ -28,6 +27,7 @@
   <script src="node_modules/showdown/dist/showdown.min.js"></script>
   <script src="node_modules/file-saver/dist/FileSaver.min.js"></script>
   <script src="main.js"></script>
+  <script>document.getElementsByTagName('textarea')[0].focus();</script>
 
 </body>
 </html>
