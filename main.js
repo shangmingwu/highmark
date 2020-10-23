@@ -28,7 +28,12 @@ function render() {
 function saveEntryBoxToFile() {
     var text = document.getElementById("entryBox").value;
     var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, fileName);
+    if (fileName === "") {
+        saveAs(blob, "save.md");
+    }
+    else {
+        saveAs(blob, fileName);
+    }
 }
 
 /* Exports the HTML conversion of the markdown to a file on disk. */
@@ -88,4 +93,15 @@ document.getElementById('entryBox').addEventListener('keydown', function(e) {
       this.selectionStart =
         this.selectionEnd = start + 1;
     }
-  });
+});
+
+document.getElementById('editor').addEventListener('keydown', function(e) {
+    if (e.key == 's' && e.ctrlKey) {
+        e.preventDefault();
+        saveButtonClicked();
+    }
+    if (e.key == 'u' && e.ctrlKey) {
+        e.preventDefault();
+        exportToHTML();
+    }
+});
