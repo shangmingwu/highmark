@@ -3,12 +3,24 @@ var fileName = "";
 /* Renders markdown from the textarea into HTML to display in the div. */
 
 function render() {
-    var converter = new showdown.Converter({simplifiedAutoLink: 'true'}, {ghMentions: 'true'}, {ghMentionsLink: 'true'}, {ghCompatibleHeaderId: 'true'}, {strikethrough: 'true'}, {tasklists: 'true'}, {smoothLivePreview: 'true'}, {openLinksInNewWindow: 'true'}, {emoji: 'true'}, {underline: 'true'}, {metadata: 'true'});
+    var text = document.getElementById('entryBox').value;
+    var converter = new showdown.Converter(
+    {simplifiedAutoLink: 'true'},
+    {ghMentions: 'true'},
+    {ghMentionsLink: 'true'},
+    {ghCompatibleHeaderId: 'true'},
+    {strikethrough: 'true'},
+    {tasklists: 'true'},
+    {smoothLivePreview: 'true'},
+    {openLinksInNewWindow: 'true'},
+    {emoji: 'true'},
+    {underline: 'true'},
+    {metadata: 'true'}
+    );
     converter.setFlavor('github');
-    var text = document.getElementById('entryBox').value,
-        target = document.getElementById('outputDiv'),
-        html = converter.makeHtml(text);
-    target.innerHTML = html;
+    var target = document.getElementById('outputDiv');
+    var result = converter.makeHtml(text);
+    target.innerHTML = result;
 }
 
 /* Just saves the text from the textarea into a file on disk. */
