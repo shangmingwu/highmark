@@ -1,4 +1,18 @@
-var fileName = "";
+var fileName;
+
+/* Prompt for input and change the name that the file will save to. */
+
+function rename() {
+    var newFileName = prompt("New filename:", "save")
+    if (newFileName != null) {
+        fileName = newFileName;
+        if (fileName.substr(fileName.length - 3) != ".md") {
+            fileName += ".md";
+        }
+        document.getElementById("boxTitle").innerHTML = fileName;
+    }
+}
+
 
 /* Renders markdown from the textarea into HTML to display in the div. */
 
@@ -28,12 +42,10 @@ function render() {
 function saveEntryBoxToFile() {
     var text = document.getElementById("entryBox").value;
     var blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-    if (fileName === "") {
-        saveAs(blob, "save.md");
-    }
-    else {
+    if (fileName != null) {
         saveAs(blob, fileName);
     }
+    else saveAs(blob, "save.md");
 }
 
 /* Exports the HTML conversion of the markdown to a file on disk. */
@@ -69,9 +81,9 @@ function exportButtonClicked() {
 
 async function read(input) {
     var text = await readFile(input.files[0]);
-    var fileInfo = document.getElementById("loadButton");
+    var fileInfo = document.getElementById("loadFile");
     fileName = fileInfo.files.item(0).name;
-    document.getElementById("loadButton").value = "";
+    document.getElementById("loadFile").value = "";
     document.getElementById("entryBox").value = text;
     document.getElementById("boxTitle").innerHTML = fileName;
     render();
@@ -100,8 +112,12 @@ document.getElementById('editor').addEventListener('keydown', function(e) {
         e.preventDefault();
         saveButtonClicked();
     }
-    if (e.key == 'u' && e.ctrlKey) {
+    if (e.key == 'e' && e.ctrlKey) {
         e.preventDefault();
         exportToHTML();
+    }
+    if (e.key == 'o' && e.ctrlKey) {
+        e.preventDefault();
+        document.getElementById('loadFile').click();
     }
 });

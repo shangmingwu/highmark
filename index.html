@@ -8,11 +8,12 @@
   <button id="renderButton" onClick="render()">Render</button>
   <button id="saveButton" onClick="saveButtonClicked()">Save</button>
   <button id="exportButton" onClick="exportButtonClicked()">Export to HTML</button>
-  <input id="loadButton" type="file" onchange="read(this)"/>
+  <button if="loadButton" onclick="document.getElementById('loadFile').click();">Open</button>
+  <input id="loadFile" type="file" onchange="read(this)" style="display: none;"/>
   <hr>
   <div class="flex-container">
     <div class="flex-child">
-      <span id="boxTitle">Text input</span>
+      <span id="boxTitle">Filename</span> <button id="renameButton" onClick="rename()">Rename</button>
       <hr>
       <textarea id="entryBox" oninput="render()" placeholder="Welcome to the text editor! Enter text here...."></textarea>
     </div>
