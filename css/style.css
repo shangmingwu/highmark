@@ -13,6 +13,7 @@
 }
 
 body {
+    -webkit-font-smoothing: antialiased;
     margin: 10px;
     height: 100vh;
     background-color: #333333;
