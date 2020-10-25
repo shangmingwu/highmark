@@ -1,5 +1,4 @@
 var fileName;
-
 /* Prompt for input and change the name that the file will save to. */
 
 function rename() {
@@ -12,7 +11,6 @@ function rename() {
         document.getElementById("boxTitle").innerHTML = fileName;
     }
 }
-
 
 /* Renders markdown from the textarea into HTML to display in the div. */
 
@@ -35,6 +33,12 @@ function render() {
     var target = document.getElementById('outputDiv');
     var result = converter.makeHtml(text);
     target.innerHTML = result;
+}
+
+/* Checks for automatic rendering or not. */
+
+function autoRender() {
+    if (document.getElementById("autoRenderCheck").checked) render();
 }
 
 /* Just saves the text from the textarea into a file on disk. */
@@ -108,16 +112,62 @@ document.getElementById('entryBox').addEventListener('keydown', function(e) {
 });
 
 document.getElementById('editor').addEventListener('keydown', function(e) {
-    if (e.key == 's' && e.ctrlKey) {
+    if (e.key == 's' && e.ctrlKey) { /* Saving*/
         e.preventDefault();
         saveButtonClicked();
     }
-    if (e.key == 'e' && e.ctrlKey) {
+    if (e.key == 'e' && e.ctrlKey) { /* Exporting */
         e.preventDefault();
         exportToHTML();
     }
-    if (e.key == 'o' && e.ctrlKey) {
+    if (e.key == 'o' && e.ctrlKey) { /* Opening */
         e.preventDefault();
         document.getElementById('loadFile').click();
     }
+    if (e.key == 'r' && e.ctrlKey) { /* Rendering */
+        e.preventDefault();
+        render();
+    }
+    if (e.key == 'r' && e.ctrlKey && e.altKey) { /* Toggling autorender */
+        e.preventDefault();
+        document.getElementById("autoRenderCheck").click();
+    }
+    if (e.key == 'b' && e.ctrlKey) { /* Bold format */
+        e.preventDefault();
+        wrapSelectionInSyntax(document.getElementById("entryBox"), "**");
+    }
+    if (e.key == 'i' && e.ctrlKey) { /* Italics format */
+        e.preventDefault();
+        wrapSelectionInSyntax(document.getElementById("entryBox"), "*");
+    }
 });
+
+function wrapSelectionInSyntax(txtArea, syntax) {
+    let currentText = txtArea.value;
+    let startPos = txtArea.selectionStart;
+    let endPos = txtArea.selectionEnd;
+    let textLength = txtArea.value.length;
+    if (startPos == endPos) {
+        if (currentText.substring(startPos - syntax.length, startPos) === syntax && currentText.substring(endPos, endPos + syntax.length) === syntax) {
+            txtArea.value = currentText.substring(0, startPos - syntax.length) + currentText.substring(endPos + syntax.length, textLength);
+        }
+        else {
+            txtArea.value = currentText.substring(0, startPos) + syntax + syntax + currentText.substring(startPos, textLength);
+            txtArea.selectionStart = startPos + syntax.length;
+            txtArea.selectionEnd = startPos + syntax.length;
+        }
+    }
+    else {
+        if (currentText.substring(startPos - syntax.length, startPos) === syntax && currentText.substring(endPos, endPos + syntax.length) === syntax) {
+            txtArea.value = currentText.substring(0, startPos - syntax.length) + currentText.substring(startPos, endPos) + currentText.substring(endPos + syntax.length, textLength);
+            txtArea.selectionStart = startPos - syntax.length;
+            txtArea.selectionEnd = endPos - syntax.length;
+        }
+        else {
+            let outputString = currentText.substring(0, startPos) + syntax + currentText.substring(startPos, endPos) + syntax + currentText.substring(endPos, textLength);
+            txtArea.value = outputString;
+            txtArea.selectionStart = startPos + syntax.length;
+            txtArea.selectionEnd = endPos + syntax.length;
+        }
+    }
+}
