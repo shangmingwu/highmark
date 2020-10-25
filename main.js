@@ -112,31 +112,31 @@ document.getElementById('entryBox').addEventListener('keydown', function(e) {
 });
 
 document.getElementById('editor').addEventListener('keydown', function(e) {
-    if (e.key == 's' && e.ctrlKey) { /* Saving*/
+    if (e.key == 's' && (e.ctrlKey || e.metaKey)) { /* Saving*/
         e.preventDefault();
         saveButtonClicked();
     }
-    if (e.key == 'e' && e.ctrlKey) { /* Exporting */
+    if (e.key == 'e' && (e.ctrlKey || e.metaKey)) { /* Exporting */
         e.preventDefault();
         exportToHTML();
     }
-    if (e.key == 'o' && e.ctrlKey) { /* Opening */
+    if (e.key == 'o' && (e.ctrlKey || e.metaKey)) { /* Opening */
         e.preventDefault();
         document.getElementById('loadFile').click();
     }
-    if (e.key == 'r' && e.ctrlKey) { /* Rendering */
+    if (e.key == 'r' && (e.ctrlKey || e.metaKey)) { /* Rendering */
         e.preventDefault();
         render();
     }
-    if (e.key == 'r' && e.ctrlKey && e.altKey) { /* Toggling autorender */
+    if (e.key == 'r' && (e.ctrlKey || e.metaKey) && e.altKey) { /* Toggling autorender */
         e.preventDefault();
         document.getElementById("autoRenderCheck").click();
     }
-    if (e.key == 'b' && e.ctrlKey) { /* Bold format */
+    if (e.key == 'b' && (e.ctrlKey || e.metaKey)) { /* Bold format */
         e.preventDefault();
         wrapSelectionInSyntax(document.getElementById("entryBox"), "**");
     }
-    if (e.key == 'i' && e.ctrlKey) { /* Italics format */
+    if (e.key == 'i' && (e.ctrlKey || e.metaKey)) { /* Italics format */
         e.preventDefault();
         wrapSelectionInSyntax(document.getElementById("entryBox"), "*");
     }
