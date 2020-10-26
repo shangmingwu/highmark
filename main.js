@@ -16,6 +16,7 @@ function initialize() {
 		document.getElementById('entryBox').value = currentText;
 	}
 	renderFileName();
+	render();
 }
 
 /* Prompt for input and change the name that the file will save to. */
