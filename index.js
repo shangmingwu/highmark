@@ -1,34 +1,34 @@
-const { app, BrowserWindow, Menu, MenuItem } = require('electron');
+const { app, BrowserWindow, Menu, MenuItem } = require("electron");
 
-function createWindow () {
+function createWindow() {
   const win = new BrowserWindow({
     webPreferences: {
-      nodeIntegration: false
-    }
-  })
-  win.loadFile('index.html');
+      nodeIntegration: false,
+    },
+  });
+  win.loadFile("index.html");
   win.maximize();
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(createWindow);
 
-app.on('window-all-closed', () => {
-    app.quit()
-})
+app.on("window-all-closed", () => {
+  app.quit();
+});
 
-app.on('activate', () => {
+app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createWindow();
   }
-})
+});
 
-app.on('web-contents-created', (e, contents) => {
-  contents.on('new-window', (e, url) => {
+app.on("web-contents-created", (e, contents) => {
+  contents.on("new-window", (e, url) => {
     e.preventDefault();
-    require('open')(url);
+    require("open")(url);
   });
-  contents.on('will-navigate', (e, url) => {
-    if (url !== contents.getURL()) e.preventDefault(), require('open')(url);
+  contents.on("will-navigate", (e, url) => {
+    if (url !== contents.getURL()) e.preventDefault(), require("open")(url);
   });
 });
 /*

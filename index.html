@@ -1,36 +1,59 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-</head>
-<body id="editor">
-  <img src="highmark.png" alt="HighMark logo" width="16" height="16"> 
-  <input type="checkbox" id="autoRenderCheck" checked="true" onclick="document.getElementsByTagName('textarea')[0].focus();">
-  <label for="autoRenderCheck"> Autorender</label>
-  <button id="renderButton" onClick="render()">Render</button>
-  <button id="saveButton" onClick="saveButtonClicked()">Save</button>
-  <button id="exportButton" onClick="exportButtonClicked()">Export to HTML</button>
-  <button if="loadButton" onclick="document.getElementById('loadFile').click();">Open</button>
-  <input id="loadFile" type="file" onchange="read(this)" style="display: none;"/>
-  <hr>
-  <div class="flex-container">
-    <div class="flex-child">
-      <span id="boxTitle">Filename</span> <button id="renameButton" onClick="rename()">Rename</button>
-      <hr>
-      <textarea id="entryBox" oninput="autoRender()" placeholder="Welcome to the text editor! Enter text here...."></textarea>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body id="editor">
+    <img src="highmark.png" alt="HighMark logo" width="16" height="16" />
+    <input
+      type="checkbox"
+      id="autoRenderCheck"
+      checked="true"
+      onclick="document.getElementsByTagName('textarea')[0].focus();"
+    />
+    <label for="autoRenderCheck"> Autorender</label>
+    <button id="renderButton" onClick="render()">Render</button>
+    <button id="saveButton" onClick="saveButtonClicked()">Save</button>
+    <button id="exportButton" onClick="exportButtonClicked()">
+      Export to HTML
+    </button>
+    <button
+      if="loadButton"
+      onclick="document.getElementById('loadFile').click();"
+    >
+      Open
+    </button>
+    <input
+      id="loadFile"
+      type="file"
+      onchange="read(this)"
+      style="display: none"
+    />
+    <hr />
+    <div class="flex-container">
+      <div class="flex-child">
+        <span id="boxTitle">Filename</span>
+        <button id="renameButton" onClick="rename()">Rename</button>
+        <hr />
+        <textarea
+          id="entryBox"
+          oninput="autoRender()"
+          placeholder="Welcome to the text editor! Enter text here...."
+        ></textarea>
+      </div>
+      <div class="flex-child">
+        <span>Preview</span>
+        <hr />
+        <div id="outputDiv"></div>
+      </div>
     </div>
-    <div class="flex-child">
-      <span>Preview</span>
-      <hr>
-      <div id="outputDiv"></div>
-    </div>
-  </div>
-  <script src="node_modules/showdown/dist/showdown.min.js"></script>
-  <script src="node_modules/file-saver/dist/FileSaver.min.js"></script>
-  <script src="main.js"></script>
-  <script>document.getElementsByTagName('textarea')[0].focus();</script>
-
-</body>
+    <script src="node_modules/showdown/dist/showdown.min.js"></script>
+    <script src="node_modules/file-saver/dist/FileSaver.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+      document.getElementsByTagName("textarea")[0].focus();
+    </script>
+  </body>
 </html>

@@ -1,75 +1,75 @@
 @font-face {
-    font-family: "Roboto";
-    src: url(Roboto/Roboto-Light.ttf);
+  font-family: "Roboto";
+  src: url(Roboto/Roboto-Light.ttf);
 }
 
 @font-face {
-    font-family: "Inconsolata";
-    src: url(Inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf);
+  font-family: "Inconsolata";
+  src: url(Inconsolata/Inconsolata-VariableFont_wdth\wght.ttf);
 }
 
 * {
-    font-family: "Roboto";
+  font-family: "Roboto";
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    margin: 10px;
-    height: 100vh;
-    background-color: #333333;
-    color: white;
+  -webkit-font-smoothing: antialiased;
+  margin: 10px;
+  height: 100vh;
+  background-color: #333333;
+  color: white;
 }
 
 a {
-    color: #009900;
+  color: #009900;
 }
 
 code {
-    font-family: "Inconsolata";
+  font-family: "Inconsolata";
 }
 
 #entryBox {
-    background-color: #333333;
-    color: white;
-    font-family: "Inconsolata";
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 10px;
-    resize: none;
+  background-color: #333333;
+  color: white;
+  font-family: "Inconsolata";
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 10px;
+  resize: none;
 }
 #outputDiv {
-    border: 1px solid white;
-    padding-left: 10px;
-  }
+  border: 1px solid white;
+  padding-left: 10px;
+}
 
 .flex-container {
-    display: flex;
-    height: 85vh;
-    flex-direction: row;
+  display: flex;
+  height: 85vh;
+  flex-direction: row;
 }
 
 @media (max-width: 800px) {
-    .flex-container {
-      flex-direction: column;
-    }
-    .flex-child:first-child {
-        padding-bottom: 10px;
-    }
+  .flex-container {
+    flex-direction: column;
   }
+  .flex-child:first-child {
+    padding-bottom: 10px;
+  }
+}
 
 .flex-child {
-    flex: 1;
-}  
+  flex: 1;
+}
 
 .flex-child:first-child {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 #outputDiv {
-    display: block;
-    height: 100%;
-    overflow: scroll;
+  display: block;
+  height: 100%;
+  overflow: scroll;
 }
