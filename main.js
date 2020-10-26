@@ -5,8 +5,10 @@ function initialize() {
 	let storedName = localStorage.getItem('fName');
 	if (storedName != null) {
 		fileName = storedName;
+		setTitle(fileName);
 	} else {
 		fileName = "save.md";
+		setTitle("HighMark Text Editor");
 	}
 	saveFileName();
 	let currentText = localStorage.getItem('cachedText');
