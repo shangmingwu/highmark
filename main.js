@@ -9,6 +9,10 @@ function initialize() {
 		fileName = "save.md";
 	}
 	saveFileName();
+	let currentText = localStorage.getItem('cachedText');
+	if (currentText != null) {
+		document.getElementById('entryBox').value = currentText;
+	}
 	renderFileName();
 }
 
@@ -54,6 +58,7 @@ function render() {
 function autoRender() {
 	if (document.getElementById("autoRenderCheck").checked) render();
 	setTitle("* " + fileName);
+	saveTextArea();
 	if (unsaved == false) unsaved = true;
 }
 
@@ -228,6 +233,13 @@ function setTitle(inputTitle) {
 function saveFileName() {
 	localStorage.setItem('fName', fileName);
 }
+
+function saveTextArea() {
+	let currentText = document.getElementById('entryBox').value;
+	if (currentText != null) {
+		localStorage.setItem('cachedText', document.getElementById('entryBox').value);
+	}
+} 
 
 /* Render the filename in the span above the textbox */
 
