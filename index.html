@@ -8,13 +8,7 @@
   </head>
   <body id="editor" onLoad="initialize()">
     <img src="highmark.png" alt="HighMark logo" width="16" height="16" />
-    <input
-      type="checkbox"
-      id="autoRenderCheck"
-      checked="true"
-      onclick="document.getElementsByTagName('textarea')[0].focus();"
-    />
-    <label for="autoRenderCheck"> Autorender</label>
+
     <button id="renderButton" onClick="render()">Render</button>
     <button id="saveButton" onClick="saveButtonClicked()">Save</button>
     <button id="exportButton" onClick="exportButtonClicked()">
@@ -46,6 +40,13 @@
       </div>
       <div class="flex-child">
         <span>Preview</span>
+        <input
+        type="checkbox"
+        id="autoRenderCheck"
+        checked="true"
+        onclick="document.getElementsByTagName('textarea')[0].focus();"
+        />
+        <label for="autoRenderCheck"> Autorender</label>
         <hr />
         <div id="outputDiv"></div>
       </div>
