@@ -1,5 +1,18 @@
 var fileName;
 var unsaved = true;
+var converter = new showdown.Converter(
+	{ simplifiedAutoLink: "true" },
+	{ ghMentions: "true" },
+	{ ghMentionsLink: "true" },
+	{ ghCompatibleHeaderId: "true" },
+	{ strikethrough: "true" },
+	{ tasklists: "true" },
+	{ smoothLivePreview: "true" },
+	{ openLinksInNewWindow: "true" },
+	{ emoji: "true" },
+	{ underline: "true" },
+	{ metadata: "true" }
+);
 
 function initialize() {
 	let storedName = localStorage.getItem('fName');
@@ -37,19 +50,6 @@ function rename() {
 
 function render() {
 	let text = document.getElementById("entryBox").value;
-	let converter = new showdown.Converter(
-		{ simplifiedAutoLink: "true" },
-		{ ghMentions: "true" },
-		{ ghMentionsLink: "true" },
-		{ ghCompatibleHeaderId: "true" },
-		{ strikethrough: "true" },
-		{ tasklists: "true" },
-		{ smoothLivePreview: "true" },
-		{ openLinksInNewWindow: "true" },
-		{ emoji: "true" },
-		{ underline: "true" },
-		{ metadata: "true" }
-	);
 	converter.setFlavor("github");
 	let target = document.getElementById("outputDiv");
 	let result = converter.makeHtml(text);
@@ -79,8 +79,8 @@ function saveEntryBoxToFile() {
 
 function exportToHTML() {
 	let text = document.getElementById("entryBox").value;
-	let converter = new showdown.Converter();
 	let html = converter.makeHtml(text);
+	html = "<!DOCTYPE html>\n<head>\n<style>\n* { font-family: Arial, Helvetica, sans-serif; }\nbody { background-color: #333333; color: white; }\na { color: #009900; }\ncode { font-family: Monaco, monospace; }\n</style>\n</head>\n<html>\n" + html + "\n</html>";
 	let blob = new Blob([html], { type: "text/plain;charset=utf-8" });
 	saveAs(blob, "save.html");
 }
